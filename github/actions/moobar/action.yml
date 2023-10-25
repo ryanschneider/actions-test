@@ -1,17 +1,15 @@
 name: "Moo instead of Foo"
-description: "Moo"
-inputs:
-  
+description: "Moo"  
 outputs:
   final-output:
     description: The output of the steps
     value: ${{ steps.moobar.outputs.stdout }}
-
 runs:
   using: composite
   steps:
     - name: Moobar
       id: moobar
       shell: bash
-      run: echo "foobar" | sed -E s/foo/moo/g
+      run: |
+        echo "foobar" | sed -E s/foo/moo/g
       continue-on-error: true
