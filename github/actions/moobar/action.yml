@@ -1,6 +1,9 @@
 name: "Moo instead of Foo"
 description: "Moo"  
 outputs:
+  test-output:
+    description: Test value
+    value: This is a test value
   final-output:
     description: The output of the steps
     value: ${{ steps.moobar.outputs.stdout }}
