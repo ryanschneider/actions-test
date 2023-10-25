@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v1
     - name: Moobar
       id: moobar
-      uses: ryanschneider/actions-test/github/actions/moobar@main
+      uses: ryanschneider/actions-test/github/actions/moobar@use-stdout
     - name: Summarize
       run: |
         echo "### Test Output:" >> $GITHUB_STEP_SUMMARY
