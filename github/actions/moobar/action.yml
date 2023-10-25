@@ -6,7 +6,7 @@ outputs:
     value: This is a test value
   final-output:
     description: The output of the steps
-    value: ${{ steps.moobar.outputs.stdout }}
+    value: ${{ steps.moobar.outputs.output }}
 runs:
   using: composite
   steps:
@@ -20,5 +20,9 @@ runs:
       id: moobar
       shell: bash
       run: |
-        echo "foobar" | sed -E s/foo/moo/g
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "output<<$EOF" >> $GITHUB_OUTPUT
+        echo "foobar" | sed -E s/foo/moo/g >> $GITHUB_OUTPUT
+        echo "$EOF" >> $GITHUB_OUTPUT
+        
       continue-on-error: true
