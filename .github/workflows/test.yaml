@@ -15,6 +15,9 @@ jobs:
       uses: ryanschneider/actions-test/github/actions/moobar@main
     - name: Summarize
       run: |
+        echo "### Test Output:" >> $GITHUB_STEP_SUMMARY
+        echo "${{ steps.moobar.outputs.test-output }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
         echo "### Final Output:" >> $GITHUB_STEP_SUMMARY
         echo "${{ steps.moobar.outputs.final-output }}" >> $GITHUB_STEP_SUMMARY
       
