@@ -1,0 +1,20 @@
+name: does it moo or foo
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      id: checkout
+      uses: actions/checkout@v1
+    - name: Moobar
+      id: moobar
+      uses: ryanschneider/actions-test/github/actions/moobar@main
+    - name: Summarize
+      run: |
+        echo "### Final Output:" >> $GITHUB_STEP_SUMMARY
+        echo "${{ steps.moobar.outputs.final-output }}" >> $GITHUB_STEP_SUMMARY
+      
