@@ -22,7 +22,6 @@ runs:
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         echo "output<<$EOF" >> $GITHUB_OUTPUT
-        sed --help 2>&1 >> $GITHUB_OUTPUT
         echo "foobar" | sed -E s/foo/moo/g >> $GITHUB_OUTPUT
         echo "$EOF" >> $GITHUB_OUTPUT
         
