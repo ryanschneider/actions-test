@@ -7,6 +7,12 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Foobar
+      id: foobar
+      shell: bash
+      run: |
+        echo "foobar"
+      continue-on-error: true
     - name: Moobar
       id: moobar
       shell: bash
